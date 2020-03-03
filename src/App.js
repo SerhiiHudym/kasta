@@ -1,168 +1,300 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
+
 import logo from './kasta-logo.png';
 import pci from './pci.png';
 import mc from './mc.png';
 import visa from './visa.png';
-import { Paper, Input, TextField, Tooltip, Button, Radio, Checkbox } from '@material-ui/core';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import { grey } from '@material-ui/core/colors';
+import check from './check-green.png';
+
+import {
+	Paper,
+	TextField,
+	Tooltip, Button,
+	Radio,
+	Checkbox,
+	Dialog,
+	DialogActions,
+	DialogContent,
+	DialogContentText,
+	DialogTitle,
+	FormControlLabel
+} from '@material-ui/core';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.state = {
-      counter: 0
-    }
-  }
+		this.state = {
+			counter: 0,
+			dialogOpened: false,
+			numberError: false,
+			expError: false,
+			nameError: false,
+			cvvError: false,
+			numberTip: '',
+			expTip: '',
+			nameTip: '',
+			cvvTip: '',
+			height: window.innerHeight.toString() + 'px'
+		}
+	}
 
-  render() {
-    return (
-      <div style={{display: 'flex', justifyContent: 'center', paddingTop: '5%', backgroundColor: '#7E7E7E'}}>
-        <div style={{width: '500px'}}>
-          <header style={{display: 'flex', justifyContent: 'space-between', backgroundColor: "#2A2C30", borderTopLeftRadius: '12px', borderTopRightRadius: '12px'}}>
-            <div style={{marginLeft: '2%', marginTop: '-1.7%'}}>
-              <img style={{width: '30%'}} src={logo} alt="Kasta Logo"></img>
-            </div>
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
-              <div style={{color: '#737373'}}>До оплати</div>
-              <div style={{color: '#CAD3DD'}}>123 284 грн</div>
-            </div>
-          </header>
-          <div style={{display: 'flex', justifyContent: 'center', backgroundColor: '#FFFFFF', paddingBottom: '5%'}}>
-            <Paper elevation={3} style={{width: '95%', marginTop: "2%"}}>
-              <div>
-                <div style={{color: '#3A88FD'}}>Нова картка</div>
-                {/* <br /> */}
-                Visa, MasterCard
-              </div>
-              <hr style={{borderTop: "1px dashed #E9EDF1", borderBottom: '0px'}} />
-              <div style={{display: 'flex', justifyContent: 'space-around'}}>
-                <div style={{width: '65%'}}>
-                  <div>Номер картки</div>
-                  <TextField
-                    style={{
-                      paddingBottom: '5px'
-                      // width: '60%'
-                      // height: '30%'
-                    }}
-                    fullWidth
-                    // required
-                    // id="filled-required"
-                    // label="Required"
-                    // defaultValue="Hello World"
-                    // variant="filled"
-                    variant="outlined"
-                    placeholder="#### #### #### ####"
-                  />
-                </div>
-                <div style={{width: '27%'}}>
-                  <div>Термін дії</div>
-                  <TextField
-                    fullWidth
-                    // required
-                    // id="filled-required"
-                    // label="Required"
-                    // defaultValue="Hello World"
-                    // variant="filled"
-                    variant="outlined"
-                    placeholder="MM / PP"
-                  />
-                </div>
-              </div>
-              <div style={{display: 'flex'}}>
-                <div style={{width: '65%'}}>
-                  <div>Власник карти</div>
-                  <TextField
-                    fullWidth
-                    // required
-                    // id="filled-required"
-                    // label="Required"
-                    // defaultValue="Hello World"
-                    // variant="filled"
-                    variant="outlined"
-                    placeholder="CARDHOLDER NAME"
-                  />
-                </div>
-                <div  style={{width: '27%'}}>
-                  <div style={{display: 'flex'}}>CVV <div style={{borderRadius: "50%", backgroundColor: 'grey', color: 'white', width: '17px', height: '17px', display: 'flex', justifyContent: 'center'}}>?</div></div>
-                  <TextField
-                    // required
-                    // id="filled-required"
-                    // label="Required"
-                    // defaultValue="Hello World"
-                    // variant="filled"
-                    variant="outlined"
-                    placeholder="XXX"
-                  />
-                </div>
-              </div>
-              <hr style={{borderTop: "1px dashed #E9EDF1", borderBottom: '0px'}} />
+	handleInputCardNumber(e) {
+		if (e.target.value.length === 16 && this.state.numberError === true) {
+			this.setState({
+				numberError: false,
+				numberTip: ''
+			})
+		}
 
-              {/* <hr style={{borderTop: "1px dashed #E9EDF1", borderBottom: '0px'}} /> */}
-              <div style={{display: 'flex', justifyContent: 'center'}}>
-                Запам'ятати цю картку
-              </div>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    // checked={state.checkedB}
-                    checked={true}
-                    // onChange={handleChange('checkedB')}
-                    value="checkedB"
-                    color="primary"
-                  />
-                }
-                label="Primary"
-              />
-              <div style={{display: 'flex', justifyContent: 'center'}}>
-                <Button variant="contained" color="secondary">
-                  Оплатити 123 284 грн
-                </Button>
-              </div>
-              {/* <button>Оплатити 123 284 грн</button> */}
-              <div style={{display: 'flex', justifyContent: 'center'}}>На виконання платежу 00:11:51</div>
-            </Paper>
-          </div>
-          <footer>
-            <div style={{backgroundColor: '#FAFAFA', display: 'flex', justifyContent: 'space-around', paddingTop: '3%', paddingBottom: '3%'}}>
-              <img src={pci} style={{width: '12%'}} />
-              <img src={mc} style={{width: '12%'}} />
-              <img src={visa} style={{width: '12%'}} />
-            </div>
-            <div style={{borderBottomLeftRadius: '12px', borderBottomRightRadius: '12px', backgroundColor: '#2A2C30', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                <img src={logo} style={{width: '15%'}} /><div style={{color: '#FFFFFF', marginTop: '1.9%', marginLeft: '2px', fontSize: '1.2em', fontWeight: '700'}}>Pay</div>
-            </div>
-          </footer>
-        </div>
-      </div>
-    )
-  }
+		if (e.target.value.length > 16) {
+			e.target.value = e.target.value.slice(0, 16);
+		}
+
+		this.setState({
+			cardNumber: e.target.value
+		})
+	}
+
+	handleExpDate(e) {
+		if (e.target.value.length > 0 && this.state.expError === true) {
+			this.setState({
+				expError: false,
+				expTip: ''
+			})
+		}
+
+		this.setState({
+			expDate: e.target.value
+		})
+	}
+
+	handleInputCardHolder(e) {
+		if (e.target.value.length > 0 && this.state.nameError === true) {
+			this.setState({
+				nameError: false,
+				nameTip: ''
+			})
+		}
+
+		e.target.value = e.target.value.toUpperCase()
+		this.setState({
+			cardHolder: e.target.value
+		})
+	}
+
+	handleCVV(e) {
+		if (e.target.value.length === 3 && this.state.cvvError === true) {
+			this.setState({
+				cvvError: false,
+				cvvTip: ''
+			})
+		}
+
+		if (e.target.value.length > 3) {
+			e.target.value =  e.target.value.slice(0, 3);
+
+			this.setState({
+				cardCVV: e.target.value
+			})
+		}
+		this.setState({
+			cardCVV: e.target.value
+		})
+	}
+
+	handleClick() {
+		let counter = 0;
+
+		if (this.state.cardNumber === undefined || this.state.cardNumber === '' || this.state.cardNumber.length < 16) {
+			this.setState({
+				numberError: true,
+				numberTip: 'Невірна картка',
+			})
+		} else {
+			counter +=1;
+		}
+
+		if (this.state.expDate === undefined || this.state.expDate === '') {
+			this.setState({
+				expError: true,
+				expTip: 'Невірний термін',
+			})
+		} else {
+			counter +=1;
+		}
+
+		if (this.state.cardHolder === undefined || this.state.cardHolder === '') {
+			this.setState({
+				nameError: true,
+				nameTip: 'Введіть ПІБ власника картки',
+			})
+		} else {
+			counter +=1;
+		}
+
+		if (this.state.cardCVV === undefined || this.state.cardCVV === '' || this.state.cardCVV.length < 3) {
+			this.setState({
+				cvvError: true,
+				cvvTip: 'Введіть CVV',
+			})
+		} else {
+			counter +=1;
+		}
+
+		if (counter === 4) {
+			this.setState({
+				dialogOpened: true
+			})
+		}
+
+	}
+
+	handleCloseDialog() {
+		this.setState({
+			dialogOpened: false
+		})
+	}
+
+	render() {
+		return (
+			<div className="wrapper" style={{height: this.state.height}}>
+				<div style={{width: '500px'}}>
+					<header>
+						<div className="header-logo">
+							<img className="header-logo-img" src={logo} alt="Kasta Logo"></img>
+						</div>
+						<div className="header-right">
+							<div className="header-right-toPay">До оплати</div>
+							<div className="header-right-sum">123 284 грн</div>
+						</div>
+					</header>
+					<main>
+						<Paper className="paper" elevation={5}>
+							<div style={{color: '#3F51B5', display: 'flex'}}>
+								<Radio
+									value="a"
+									name="radio-button-demo"
+									checked
+									color="primary"
+								/>
+								<div>
+									<div style={{marginTop: '15%'}}>Нова картка</div>
+									<div style={{marginTop: '3%', fontSize: '0.8em', color: '#77869B'}}>Visa, MasterCard</div>
+								</div>
+							</div>
+							<hr className="hr1" />
+							<div style={{display: 'flex', justifyContent: 'space-around'}}>
+								<div style={{width: '65%'}}>
+									<div style={{marginBottom: '2%'}}>Номер картки</div>
+									<TextField
+										style={{
+											paddingBottom: '5px',
+											appearance: 'none'
+										}}
+										type='number'
+										fullWidth
+										onChange={(e) => this.handleInputCardNumber(e)}
+										variant="outlined"
+										placeholder="#### #### #### ####"
+										error={this.state.numberError}
+										helperText={this.state.numberTip}
+									/>
+								</div>
+								<div className="w27">
+									<div style={{marginBottom: '4%'}}>Термін дії</div>
+									<TextField
+										fullWidth
+										onChange={(e) => this.handleExpDate(e)}
+										variant="outlined"
+										placeholder="MM / PP"
+										error={this.state.expError}
+										helperText={this.state.expTip}
+									/>
+								</div>
+							</div>
+							<div style={{display: 'flex', justifyContent: 'space-around', marginTop: '3%'}}>
+								<div style={{width: '65%'}}>
+									<div style={{display: 'flex', marginBottom: '2%'}}>Власник карти <Tooltip arrow placement="top" title="Фамілія і ім'я людини, на яке випущена карта. Для іменних карт - нанесено на карту."><div className="tooltip">?</div></Tooltip></div>
+									<TextField
+										fullWidth
+										onChange={(e) => this.handleInputCardHolder(e)}
+										variant="outlined"
+										placeholder="CARDHOLDER NAME"
+										error={this.state.nameError}
+										helperText={this.state.nameTip} // "Введіть ПІБ власника картки"
+									/>
+								</div>
+								<div  style={{width: '27%'}}>
+									<div style={{display: 'flex', marginBottom: '4%'}}>CVV <Tooltip arrow placement="top" title="3 цифри, зображених на зворотній стороні карти."><div className="tooltip">?</div></Tooltip></div>
+									<TextField
+										maxLength="2"
+										variant="outlined"
+										placeholder="XXX"
+										error={this.state.cvvError}
+										helperText={this.state.cvvTip}
+										onChange={(e) => this.handleCVV(e)}
+									/>
+								</div>
+							</div>
+							<hr style={{borderTop: "1px dashed #E9EDF1", borderBottom: '0px', marginTop: '5%', marginBottom: '1%'}} />
+
+							<div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginBottom: '1%'}}>
+								<FormControlLabel
+									style={{marginRight: '0'}}
+									control={
+										<Checkbox
+											checked={true}
+											value="checked"
+											color="primary"
+										/>
+									}
+								/>
+								<div>Запам'ятати цю картку</div>
+								<Tooltip arrow placement="top" title="Картка буде прив'язана до акаунту і Вам не потрібно буде заповнювати інформацію знову."><div className="tooltip">?</div></Tooltip>
+							</div>
+							<div style={{display: 'flex', justifyContent: 'center', marginBottom: '3%'}}>
+								<Button variant="contained" color="secondary" style={{textTransform: 'none', width: '70%'}} onClick={() => this.handleClick()}>
+									Оплатити 123 284 грн
+								</Button>
+							</div>
+							<div style={{display: 'flex', justifyContent: 'center', marginBottom: '7%', color: '#E1E6EC'}}>На виконання платежу 00:12:33</div>
+						</Paper>
+					</main>
+					<footer>
+						<div className="footer-verifying">
+							<img src={pci} alt="PCI" className="footer-images" />
+							<img src={mc} alt="MasterCard" className="footer-images" />
+							<img src={visa} alt="Visa" className="footer-images" />
+						</div>
+						<div className="kasta-pay-logo-block">
+							<img src={logo} alt="Kasta Pay" className="kasta-pay-logo" /><div className="kasta-pay-logo-addition">Pay</div>
+						</div>
+					</footer>
+				</div>
+				
+				<Dialog
+					open={this.state.dialogOpened}
+					onClose={() => this.handleCloseDialog()}
+					aria-labelledby="alert-dialog-title"
+					aria-describedby="alert-dialog-description"
+				>
+					<DialogTitle id="alert-dialog-title" style={{display: 'flex', justifyContent: 'center'}}>{"Оплата пройшла успішно!"}</DialogTitle>
+					<DialogContent>
+						<DialogContentText id="alert-dialog-description" style={{display: 'flex', justifyContent: 'center'}}>
+							<img src={check} width="25%" alt="Success!" />
+						</DialogContentText>
+					</DialogContent>
+					<DialogActions style={{display: 'flex', justifyContent: 'center'}}>
+						<Button onClick={() => this.handleCloseDialog()} color="primary">
+							Ok
+						</Button>
+					</DialogActions>
+				</Dialog>
+			</div>
+		)
+	}
 }
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default App;

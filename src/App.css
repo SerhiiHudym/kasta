@@ -1,38 +1,126 @@
-.App {
-  text-align: center;
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #7E7E7E;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #2A2C30;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header-logo {
+  margin-left: 2%;
+  margin-top: -1.7%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header-logo-img {
+  width: 30%;
+}
+
+.header-right {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
+  justify-content: space-around;
+  margin-right: 2%;
+}
+
+.header-right-toPay {
+  color: #737373;
+  font-size: 0.8em;
+  margin-top: 7%;
+}
+
+.header-right-sum {
+  color: #CAD3DD;
+  font-size: 1.2em;
+  margin-bottom: 7%;
+}
+
+main {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #FFFFFF;
+  padding-bottom: 5%;
+}
+
+.paper {
+  width: 95%;
+  margin-top: 2%;
+}
+
+.w27 {
+  width: 27%;
+}
+
+.hr1 {
+  border-top: 1px dashed #E9EDF1;
+  border-bottom: 0px;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance:textfield;
+}
+
+.tooltip {
+  margin-left: 1%;
+  border-radius: 50%;
+  background-color: #CDD6E0;
   color: white;
+  width: 17px;
+  height: 17px;
+  display: flex;
+  justify-content: center;
 }
 
-.App-link {
-  color: #61dafb;
+.tooltip:hover {
+  background-color: #a8abb1;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.footer-images {
+  width: 12%;
+  opacity: 50%;
+}
+
+.kasta-pay-logo {
+  width: 15%;
+  margin-top: -1.7%;
+}
+
+.kasta-pay-logo-block {
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  background-color: #2A2C30;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-verifying {
+  background-color: #FAFAFA;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+.kasta-pay-logo-addition {
+  color: #FFFFFF;
+  margin-left: 2px;
+  font-size: 1.2em;
+  font-weight: 700;
 }
