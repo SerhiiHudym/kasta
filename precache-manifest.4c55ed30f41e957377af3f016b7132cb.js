@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6df84e002d856540d70622c57e43f065",
+    "revision": "1cd8e160352ee55d8cb0c7b6878674a4",
     "url": "/kasta/index.html"
   },
   {
-    "revision": "10936defccc4b6b5e14f",
-    "url": "/kasta/static/css/main.03d552fe.chunk.css"
+    "revision": "70f9a2621673f0a65300",
+    "url": "/kasta/static/css/main.dc130c3f.chunk.css"
   },
   {
     "revision": "0c476babe8f6a3a3088f",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/kasta/static/js/2.cb2351a2.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "10936defccc4b6b5e14f",
+    "revision": "70f9a2621673f0a65300",
     "url": "/kasta/static/js/main.5c89f573.chunk.js"
   },
   {

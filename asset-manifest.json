@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/kasta/static/css/main.03d552fe.chunk.css",
+    "main.css": "/kasta/static/css/main.dc130c3f.chunk.css",
     "main.js": "/kasta/static/js/main.5c89f573.chunk.js",
     "main.js.map": "/kasta/static/js/main.5c89f573.chunk.js.map",
     "runtime-main.js": "/kasta/static/js/runtime-main.19d3664a.js",
@@ -8,9 +8,9 @@
     "static/js/2.cb2351a2.chunk.js": "/kasta/static/js/2.cb2351a2.chunk.js",
     "static/js/2.cb2351a2.chunk.js.map": "/kasta/static/js/2.cb2351a2.chunk.js.map",
     "index.html": "/kasta/index.html",
-    "precache-manifest.a72dc38bcd5475e20314653c21e03673.js": "/kasta/precache-manifest.a72dc38bcd5475e20314653c21e03673.js",
+    "precache-manifest.4c55ed30f41e957377af3f016b7132cb.js": "/kasta/precache-manifest.4c55ed30f41e957377af3f016b7132cb.js",
     "service-worker.js": "/kasta/service-worker.js",
-    "static/css/main.03d552fe.chunk.css.map": "/kasta/static/css/main.03d552fe.chunk.css.map",
+    "static/css/main.dc130c3f.chunk.css.map": "/kasta/static/css/main.dc130c3f.chunk.css.map",
     "static/js/2.cb2351a2.chunk.js.LICENSE.txt": "/kasta/static/js/2.cb2351a2.chunk.js.LICENSE.txt",
     "static/media/check-green.png": "/kasta/static/media/check-green.b06d686c.png",
     "static/media/kasta-logo.png": "/kasta/static/media/kasta-logo.6f784d94.png",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.19d3664a.js",
     "static/js/2.cb2351a2.chunk.js",
-    "static/css/main.03d552fe.chunk.css",
+    "static/css/main.dc130c3f.chunk.css",
     "static/js/main.5c89f573.chunk.js"
   ]
 }
